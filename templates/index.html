@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Failure Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Heart Failure Prediction</h1>
+        
+        <form action="/predict" method="POST">
+            <div class="two-column">
+                <div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required min="1" max="120">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="anaemia">Anaemia (0=No, 1=Yes):</label>
+                        <select id="anaemia" name="anaemia" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="creatinine_phosphokinase">Creatinine Phosphokinase (mcg/L):</label>
+                        <input type="number" id="creatinine_phosphokinase" name="creatinine_phosphokinase" required min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="diabetes">Diabetes (0=No, 1=Yes):</label>
+                        <select id="diabetes" name="diabetes" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ejection_fraction">Ejection Fraction (%):</label>
+                        <input type="number" id="ejection_fraction" name="ejection_fraction" required min="1" max="100" step="0.1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="high_blood_pressure">High Blood Pressure (0=No, 1=Yes):</label>
+                        <select id="high_blood_pressure" name="high_blood_pressure" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="form-group">
+                        <label for="platelets">Platelets (kiloplatelets/mL):</label>
+                        <input type="number" id="platelets" name="platelets" required min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serum_creatinine">Serum Creatinine (mg/dL):</label>
+                        <input type="number" id="serum_creatinine" name="serum_creatinine" required min="0" step="0.1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="serum_sodium">Serum Sodium (mEq/L):</label>
+                        <input type="number" id="serum_sodium" name="serum_sodium" required min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sex">Sex (0=Female, 1=Male):</label>
+                        <select id="sex" name="sex" required>
+                            <option value="0">Female</option>
+                            <option value="1">Male</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="smoking">Smoking (0=No, 1=Yes):</label>
+                        <select id="smoking" name="smoking" required>
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Follow-up Period (days):</label>
+                        <input type="number" id="time" name="time" required min="0">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group" style="text-align: center;">
+                <button type="submit">Predict Risk</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
